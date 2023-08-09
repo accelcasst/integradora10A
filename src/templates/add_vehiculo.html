@@ -1,0 +1,38 @@
+{% block body%}
+
+<div class="row">
+    <div class="col-md-5">
+        {% with messages = get_flashed_messages() %}
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="card card-body">
+            <form action="/add_vehiculo" method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div class="form-group">
+                    <input type="text" name="plate" placeholder="Plate" class="form-control">
+                </div>  
+               <!-- The second value will be selected initially -->
+                <select name="parking_id" id="parking_id">
+                    <option value="1">Estacionamiento 1</option>
+                    <option value="2" selected>Estacionamiento 2</option>
+                    <option value="3">Estacionamiento 3</option>
+                </select>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+                </div>
+                    
+            </form>
+        </div>
+    </div>
+    <div class="col-md-7"></div>
+</div>
+
+{% endblock %}
