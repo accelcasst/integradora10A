@@ -8,7 +8,7 @@ class User(UserMixin):
         self.username = username
         self. password = password
         self.fullname = fullname
-        self.rol = rol
+        self.rol = rol 
 
     @classmethod
     def check_password(self, hashed_password, password):

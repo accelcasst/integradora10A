@@ -1,0 +1,77 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ver Pagos Registrados</title>
+    <link rel="shortcut icon" href="../img/nuts.png" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/estilos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+
+    <header>
+        <section class="textos-header">
+            <h1>Pagos Registrados</h1>
+            <h2></h2>
+        </section>
+        <div class="wave" style="height: 80px; overflow: hidden;"><svg viewBox="0 0 400 150" preserveAspectRatio="none"
+            style="height: 100%; width: 100%;">
+            <path d="M-4.22,52.63 C262.69,265.78 197.23,-155.59 508.17,80.25 L500.00,150.00 L0.00,150.00 Z"
+                style="stroke: none; fill: rgb(69,69,69);"></path>
+        </svg></div>
+    </header>
+    
+
+    <table class="tabla"   border="4" id="paymentTable">
+        <tr>
+            <th>Nombre del Auto</th>
+            <th>Nombre del Estacionamiento</th>
+            <th>Total a Pagar</th>
+        </tr>
+    </table>
+    <button class="boton2" type="button" onclick="redirectToPrice()">Nuevo Registro</button>
+    <button class="botonn2"  type="button" onclick="redirectToPaid()">Nuevo Pago</button>
+    <script>
+        function redirectToPrice(){
+            window.location.href = '/register_prices'
+        } 
+
+        function redirectToPaid(){
+            window.location.href = '/paid_bill'
+        }
+
+        function loadPayments() {
+            const cachedPayments = JSON.parse(localStorage.getItem('payments')) || [];
+            const paymentTable = document.getElementById('paymentTable');
+
+            cachedPayments.forEach(payment => {
+                const row = paymentTable.insertRow();
+                row.insertCell().textContent = payment.carName;
+                row.insertCell().textContent = payment.parkingName;
+                row.insertCell().textContent = `$${payment.totalPayment}`;
+            });
+        }
+
+        // Cargar datos al cargar la página
+        window.addEventListener('load', function() {
+            loadPayments();
+        });
+    </script>
+
+
+<footer>
+    <div class="contenedor-footer">
+        <div class="content-foo">
+            <h4>SIGEST</h4>
+            <p>Estacionamientos de Mexico</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

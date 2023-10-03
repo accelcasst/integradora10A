@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block body%}
+<div class="col-md-4 offset-md-4">
+
+ <div class="card card-body">
+    {% with messages = get_flashed_messages() %}
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+   
+    <form action="/lista_parkings/update/{{ parkings.0 }}" method="POST">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <div class="form-group my-4"> 
+          <label for="parking_name">Estacionamiento:</label>
+          <input type="text" name="parking_name" placeholder="Estacionamiento" value="{{ parkings.1 }}" class="form-control" required>
+        </div>
+
+        <div class="form-group my-4">
+          <label for="location">Ubicación:</label>
+          <input type="text" name="location" placeholder="Ubicación" value="{{ parkings.2 }}" class="form-control" required>
+        </div>
+
+        <div class="form-group my-4">
+          <label for="phone_number">Telefono:</label>
+          <input type="text" name="phone_number" placeholder="Telefono" value="{{ parkings.3 }}" class="form-control" required>
+        </div>
+
+        <div class="form-group my-4">
+          <label for="space">Espacios:</label>
+          <input type="text" name="space" placeholder="Espacios" value="{{ parkings.4 }}" class="form-control" required>
+        </div>
+
+        <button type="submit" class="w-100 btn btn-success btn-block my-2">Save</button>
+        <button type="button" class="w-100 btn btn-md btn-info my-2" onclick="location.href='/get_full_parkings'">Regresar</button>
+    </form>
+ </div>
+
+</div>
+{% endblock %}

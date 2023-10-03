@@ -3,10 +3,10 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    MYSQL_HOST = 'localhost'
-    MYSQL_USER = 'root'
-    MYSQL_PASSWORD = ''
-    MYSQL_DB = 'parking'
+    MYSQL_HOST = 'parking.c8ybi9whms5y.us-east-1.rds.amazonaws.com'
+    MYSQL_USER = 'accelcasst'
+    MYSQL_PASSWORD = 'Mugiwara0244'
+    MYSQL_DB = 'parking2'
 
 config={
     'development':DevelopmentConfig

@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block body %}
+{% with messages = get_flashed_messages() %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="container">
+    <div>
+        <section id="tablas-admi">
+            <p id="espacio-tablas-admi"></p>
+            <h1></h1>
+            <br>
+            <table class="table table-bordered table-hover">
+                <thead id="encabezado" class="fondoT">
+                    <td>Id</td>
+                    <td>Placa</td>
+                    <td>Hora de Entrada</td>
+                    <td>Hora de Salida</td>
+                    <td>Precio/Hora</td>
+                    <td>Estacionamiento</td>
+                </thead>
+            <tbody>             
+                {% for vehiculos in listt_vehiculos %}
+                    <tr class="fondoclaro">
+                        <td>{{vehiculos.0}}</td>
+                        <td>{{vehiculos.4}}</td>
+                        <td>{{vehiculos.1}}</td>
+                        <td>{{vehiculos.2}}</td>
+                        <td>{{vehiculos.3}}</td>
+                        <td>{{vehiculos.4}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

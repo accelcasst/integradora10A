@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Estacionamientos</title>
+    <link rel="shortcut icon" href="img/nuts.png" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/estilos.css">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+{% with messages = get_flashed_messages() %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<body>
+ 
+    <div>
+        <div class="log">
+            
+            <nav class="tuclase">
+                <a href="login_inicio.html">Acceder</a>
+                <a href="tab_estacionamiento.html">Estacionamientos</a>
+                <a href="tab_usuario.html">Usuarios</a>
+                <a href="tab_vehiculo.html">Historial</a>
+                <a href="">|</a>
+                <a href="log_estacionamiento.html">Registrar estacionamiento</a>
+                <a href="registrar_usuario.html">Registrar persona</a>
+                <a href="configuracion.html">Costos</a>
+            </nav>
+        </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="container">
+    <div>
+        <section id="tablas-admi">
+            <p id="espacio-tablas-admi"></p>
+            <h1></h1>
+            <br>
+            <table class="table table-bordered table-hover">
+                <thead id="encabezado" class="fondoT">
+                <td>Estacionamiento</td>
+                <td>Ubicacion</td>
+                <td>Telefono</td>
+                <td>Espacios</td>
+                <td>Operaciones</td>
+                
+            </thead>
+            <tbody>             
+                {% for parkings in listt_parkings %}
+                    <tr>
+                        <tr class="fondoclaro">
+                            <td>{{parkings.1}}</td>
+                            <td>{{parkings.2}}</td>
+                            <td>{{parkings.3}}</td>
+                            <td>{{parkings.4}}</td>
+                            <td>
+                                <a class="btn btn-primary" href="/lista_parkings/edit/{{ parkings.0 }}">Editar</a>
+                                <a class="btn btn-danger btn-delete" href="/lista_parkings/delete/{{ parkings.0 }}">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
