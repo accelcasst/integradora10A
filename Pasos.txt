@@ -1,0 +1,30 @@
+git clone https://github.com/accelcasst/integradora10A.git
+
+CMD:
+Moverse a la carpeta donde se clonó
+
+env\Scripts\activate
+
+pip install -r requirements.txt
+
+pip install flask --upgrade
+
+
+**Por si falla**
+pip install flask_mysqldb
+
+pip install flask_wtf
+
+pip install flask_login
+
+==================
+Editar el archivo config.py
+
+ DEBUG = True
+    MYSQL_HOST = 'direccion aws'
+    MYSQL_USER = 'su usuario'
+    MYSQL_PASSWORD = 'contraseña'
+    MYSQL_DB = 'nombre DB'
+
+==================
+python src\app.py
