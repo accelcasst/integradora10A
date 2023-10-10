@@ -15,11 +15,15 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../static/css/diseño.css">
-{% extends './base.html' %}
-{% block title %}Login{% endblock %}
-{% block customCSS %}
-{% endblock %}
 </head>
+{% extends './base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block customCSS %}
+
+{% endblock %}
+
 
 {% block body %}
 <main>
@@ -37,9 +41,12 @@
                 
             </div>
         </div>
-    </div>
 
-
+<!--Formulario de regitro-->
+        <div class="contenedor__login-register">
+          
+            <!--Inicio-->
+            <form action="" class="formulario__login">
                 {% with messages = get_flashed_messages() %}
 
     {% if messages %}
@@ -68,6 +75,7 @@
 
 <form class="form-signin" action="/login" method="POST">
     {% with messages = get_flashed_messages() %}
+
     {% if messages %}
     <br />
     {% for message in messages %}
@@ -77,6 +85,7 @@
     </div>
     {% endfor %}
     {% endif %}
+
     {% endwith %}
     <h2 class="niga">Iniciar sesion</h2>
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
